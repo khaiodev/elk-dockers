@@ -58,6 +58,27 @@ Stack Version: [8.8.0](https://www.elastic.co/blog/whats-new-elastic-8-8-0) 🎉
 - [Docker-Compose 1.29 or higher](https://docs.docker.com/compose/install/)
 - 4GB RAM (For Windows and MacOS make sure Docker's VM has more than 4GB+ memory.)
 
+# Script Install Debian 12
+```
+#!/bin/sh -e
+
+#Defined vm.max_map_count and create rc.local
+echo "sysctl -w vm.max_map_count=262144" > /etc/rc.local
+chmod +x /etc/rc.local
+systemctl daemon-reload
+systemctl start rc-local
+
+#Install ELK Stack in Docker
+sysctl -w vm.max_map_count=262144
+git clone https://github.com/khaiodev/elk-docker.git
+cd elastic-docker
+docker-compose -f docker-compose.setup.yml run --rm keystore
+docker-compose -f docker-compose.setup.yml run --rm certs
+docker-compose up -d
+
+exit 0
+```
+
 # Setup
 
 1. Clone the Repository
