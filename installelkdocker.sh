@@ -1,14 +1,14 @@
 #!/bin/sh -e
 
-#Definido vm.max_map_count e criando serviço rc.local
+#Defined vm.max_map_count and create rc.local
 echo "sysctl -w vm.max_map_count=262144" > /etc/rc.local
 chmod +x /etc/rc.local
 systemctl daemon-reload
 systemctl start rc-local
 
-#Instalar ELK Stack em Docker
+#Install ELK Stack in Docker
 sysctl -w vm.max_map_count=262144
-git clone https://github.com/khaiodev/elk-docker.git
+git clone https://github.com/khaiodev/elk-dockers.git
 cd elastic-docker
 docker-compose -f docker-compose.setup.yml run --rm keystore
 docker-compose -f docker-compose.setup.yml run --rm certs
