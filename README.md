@@ -62,7 +62,7 @@ Stack Version: [8.8.0](https://www.elastic.co/blog/whats-new-elastic-8-8-0) 🎉
 
 1. Clone the Repository
      ```bash
-     git clone https://github.com/Selvamraju007/elastic-docker.git
+     git clone https://github.com/khaiodev/elk-dockers.git
      ```
 2. Initialize Elasticsearch Keystore and TLS Self-Signed Certificates
     ```bash
